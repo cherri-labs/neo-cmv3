@@ -6,10 +6,10 @@
     --error: #D92D20;
     --main-background-color: #0E0E0E;
     --alt-background-color: #202020;
-    --connect-wallet-color: var(--black);
-    --connect-wallet-color-hover: var(--black);
-    --connect-wallet-background-color: var(--white);
-    --connect-wallet-background-color-hover: var(--white);
+    --wallet-button-color: var(--black);
+    --wallet-button-color-hover: var(--black);
+    --wallet-button-background-color: var(--white);
+    --wallet-button-background-color-hover: var(--white);
     --btn-color: var(--white);
     --btn-color-hover: var(--white);
     --btn-background-color: transparent;
@@ -59,14 +59,17 @@ input::-webkit-inner-spin-button {
 }
 /* Connect Wallet button */
 :not(li) > .wallet-adapter-button {
-    background-color: var(--connect-wallet-background-color) !important;
-    color: var(--connect-wallet-color) !important;
-    transition: opacity .2s !important;
+    background-color: var(--wallet-button-background-color);
+    color: var(--wallet-button-color);
+    transition: opacity .2s;
 }
 :not(li) > .wallet-adapter-button:hover {
-    background-color: var(--connect-wallet-background-color-hover) !important;
-    color: var(--connect-wallet-color-hover) !important;
-    opacity: .9 !important;
+    color: var(--wallet-button-color-hover);
+    opacity: .9;
+}
+/* Top one */
+ul:first-of-type .wallet-adapter-button:hover {
+    background-color: var(--wallet-button-background-color-hover) !important;
 }
 /* Wallet list entries */
 li > .wallet-adapter-button {
