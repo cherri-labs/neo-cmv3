@@ -7,6 +7,7 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import confetti from "canvas-confetti";
 import Link from "next/link";
+import Head from "next/head";
 import Countdown from "react-countdown";
 
 import { useEffect, useMemo, useState } from "react";
@@ -102,6 +103,7 @@ const Image = styled.div`
   width: 100%;
 `
 const CollectionName = styled.h1`
+  font-family: 'Noto Sans', 'Helvetica', 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
   font-size: 64px;
   line-height: 100%;
@@ -363,38 +365,44 @@ const Home = (props: HomeProps) => {
     return {
       guardLabel,
       guards:
-        candyMachineV3.guards[guardLabel] ||
+      candyMachineV3.guards[guardLabel] ||
         candyMachineV3.guards.default ||
         {},
       guardStates: candyMachineV3.guardStates[guardLabel] ||
         candyMachineV3.guardStates.default || {
-        isStarted: true,
-        isEnded: false,
-        isLimitReached: false,
-        canPayFor: 10,
-        messages: [],
-        isWalletWhitelisted: true,
-        hasGatekeeper: false,
-      },
+          isStarted: true,
+          isEnded: false,
+          isLimitReached: false,
+          canPayFor: 10,
+          messages: [],
+          isWalletWhitelisted: true,
+          hasGatekeeper: false,
+        },
       prices: candyMachineV3.prices[guardLabel] ||
         candyMachineV3.prices.default || {
-        payment: [],
-        burn: [],
-        gate: [],
-      },
+          payment: [],
+          burn: [],
+          gate: [],
+        },
     };
   }, [
     candyMachineV3.guards,
     candyMachineV3.guardStates,
     candyMachineV3.prices,
   ]);
-  useEffect(() => {
+  /*
+    useEffect(() => {
     console.log({ guardLabel, guards, guardStates, prices });
-  }, [guardLabel, guards, guardStates, prices]);
+    }, [guardLabel, guards, guardStates, prices]);
+  */
   useEffect(() => {
     (async () => {
       if (wallet?.publicKey) {
-        const balance = await connection.getBalance(wallet.publicKey);
+        try {
+          const balance = await connection.getBalance(wallet.publicKey);
+        } catch {
+          alert('Failed to connect wallet to the RPC.\n\nAre you online?');
+        }
         setBalance(balance / LAMPORTS_PER_SOL);
       }
     })();
@@ -426,28 +434,28 @@ const Home = (props: HomeProps) => {
   const startMint = useCallback(
     async (quantityString: number = 1) => {
       const nftGuards: NftPaymentMintSettings[] = Array(quantityString)
-        .fill(undefined)
-        .map((_, i) => {
-          return {
-            burn: guards.burn?.nfts?.length
-              ? {
-                mint: guards.burn.nfts[i]?.mintAddress,
-              }
-              : undefined,
-            payment: guards.payment?.nfts?.length
-              ? {
-                mint: guards.payment.nfts[i]?.mintAddress,
-              }
-              : undefined,
-            gate: guards.gate?.nfts?.length
-              ? {
-                mint: guards.gate.nfts[i]?.mintAddress,
-              }
-              : undefined,
-          };
-        });
+            .fill(undefined)
+            .map((_, i) => {
+              return {
+                burn: guards.burn?.nfts?.length
+                  ? {
+                    mint: guards.burn.nfts[i]?.mintAddress,
+                  }
+                  : undefined,
+                payment: guards.payment?.nfts?.length
+                  ? {
+                    mint: guards.payment.nfts[i]?.mintAddress,
+                  }
+                  : undefined,
+                gate: guards.gate?.nfts?.length
+                  ? {
+                    mint: guards.gate.nfts[i]?.mintAddress,
+                  }
+                  : undefined,
+              };
+            });
 
-      console.log({ nftGuards });
+      //      console.log({ nftGuards });
       // debugger;
       candyMachineV3
         .mint(quantityString, {
@@ -467,11 +475,11 @@ const Home = (props: HomeProps) => {
     },
     [candyMachineV3.mint, guards]
   );
-
-  useEffect(() => {
+  /*
+    useEffect(() => {
     console.log({ candyMachine: candyMachineV3.candyMachine });
-  }, [candyMachineV3.candyMachine]);
-
+    }, [candyMachineV3.candyMachine]);
+  */
   const MintButton = ({
     gatekeeperNetwork,
   }: {
@@ -493,26 +501,26 @@ const Home = (props: HomeProps) => {
 
   const solCost = useMemo(
     () =>
-      prices
-        ? prices.payment
-          .filter(({ kind }) => kind === "sol")
-          .reduce((a, { price }) => a + price, 0)
-        : 0,
+    prices
+      ? prices.payment
+      .filter(({ kind }) => kind === "sol")
+      .reduce((a, { price }) => a + price, 0)
+    : 0,
     [prices]
   );
 
   const tokenCost = useMemo(
     () =>
-      prices
-        ? prices.payment
-          .filter(({ kind }) => kind === "token")
-          .reduce((a, { price }) => a + price, 0)
-        : 0,
+    prices
+      ? prices.payment
+      .filter(({ kind }) => kind === "token")
+      .reduce((a, { price }) => a + price, 0)
+    : 0,
     [prices]
   );
 
   let candyPrice = null;
-   if (prices.payment.filter(({kind}) => kind === "token").reduce((a, { kind }) => a + kind, "")) {
+  if (prices.payment.filter(({kind}) => kind === "token").reduce((a, { kind }) => a + kind, "")) {
     candyPrice = `${tokenCost} Token`
   } else if (prices.payment.filter(({kind}) => kind === "sol").reduce((a, { price }) => a + price, 0)) {
     candyPrice = `◎ ${solCost}`
@@ -520,7 +528,8 @@ const Home = (props: HomeProps) => {
     candyPrice = "1 NFT"
   }
 
-  console.log(candyPrice);
+  //  console.log(candyPrice);
+
   // Icons
   const Globe = (props) => (
     <svg
@@ -568,11 +577,14 @@ const Home = (props: HomeProps) => {
     </svg>
   )
 
-
-
   return (
     <main>
       <>
+        <Head>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&family=Plus+Jakarta+Sans:wght@600&display=swap');
+          </style>
+        </Head>
         <Header>
           <WalletContainer>
             <Wallet>
@@ -600,17 +612,17 @@ const Home = (props: HomeProps) => {
               <Content>
                 <CollectionName>Collection Name</CollectionName>
                 <InfoRow>
-                {guardStates.isStarted && wallet.publicKey && (
-                  <InfoBox>
-                    <p>Total items</p>
-                    <p>{candyMachineV3.items.available}{" "}</p>
-                  </InfoBox>
-                )} {guardStates.isStarted && wallet.publicKey && (
-                  <InfoBox>
-                    <p>Price</p>
-                    <p>{candyPrice}</p>
-                  </InfoBox>
-                )}
+                  {guardStates.isStarted && wallet.publicKey && (
+                    <InfoBox>
+                      <p>Total items</p>
+                      <p>{candyMachineV3.items.available}{" "}</p>
+                    </InfoBox>
+                  )} {guardStates.isStarted && wallet.publicKey && (
+                    <InfoBox>
+                      <p>Price</p>
+                      <p>{candyPrice}</p>
+                    </InfoBox>
+                  )}
                   <IconRow>
                     <a href="#" target="_blank" rel="noopener noreferrer"><Globe></Globe></a>
                     <a href="#" target="_blank" rel="noopener noreferrer"><Twitter></Twitter></a>
@@ -635,64 +647,64 @@ const Home = (props: HomeProps) => {
                   //   <h1>You cannot pay for the mint</h1>
                 ) : !guardStates.isWalletWhitelisted ? (
                   <PrivateWrap>
-                  <PrivateText>Mint is private</PrivateText>
-                  <PrivateSubtext>You’re currently not allowed to mint. Try again at a later time.</PrivateSubtext>
+                    <PrivateText>Mint is private</PrivateText>
+                    <PrivateSubtext>You’re currently not allowed to mint. Try again at a later time.</PrivateSubtext>
                   </PrivateWrap>
                 ) : (
                   <>
                     <>
                       {!!candyMachineV3.items.remaining &&
-                        guardStates.hasGatekeeper &&
-                        wallet.publicKey &&
-                        wallet.signTransaction ? (
-                        <GatewayProvider
-                          wallet={{
-                            publicKey: wallet.publicKey,
-                            //@ts-ignore
-                            signTransaction: wallet.signTransaction,
-                          }}
-                          gatekeeperNetwork={guards.gatekeeperNetwork}
-                          connection={connection}
-                          cluster={
-                            process.env.NEXT_PUBLIC_SOLANA_NETWORK || "devnet"
-                          }
-                          options={{ autoShowModal: false }}
-                        >
-                          <MintButton
-                            gatekeeperNetwork={guards.gatekeeperNetwork}
-                          />
-                        </GatewayProvider>
-                      ) : (
-                        <MintButton />
-                      )}
+                       guardStates.hasGatekeeper &&
+                       wallet.publicKey &&
+                       wallet.signTransaction ? (
+                         <GatewayProvider
+                           wallet={{
+                             publicKey: wallet.publicKey,
+                             //@ts-ignore
+                             signTransaction: wallet.signTransaction,
+                           }}
+                           gatekeeperNetwork={guards.gatekeeperNetwork}
+                           connection={connection}
+                           cluster={
+                             process.env.NEXT_PUBLIC_SOLANA_NETWORK || "devnet"
+                           }
+                           options={{ autoShowModal: false }}
+                         >
+                           <MintButton
+                             gatekeeperNetwork={guards.gatekeeperNetwork}
+                           />
+                         </GatewayProvider>
+                       ) : (
+                         <MintButton />
+                       )}
                     </>
                   </>
                 )}
 
                 <ProgressbarWrap>
-                {guardStates.isStarted && wallet.publicKey && (
-                  <MintCount>
-                    Total minted {candyMachineV3.items.redeemed} /  
-                    {candyMachineV3.items.available}{" "}
-                    {(guards?.mintLimit?.mintCounter?.count ||
-                      guards?.mintLimit?.settings?.limit) && (
-                        <MintedByYou>
-                        <>
-                          ({guards?.mintLimit?.mintCounter?.count || "0"}
-                          {guards?.mintLimit?.settings?.limit && (
-                            <>/{guards?.mintLimit?.settings?.limit} </>
-                          )}
-                          by you)
-                        </>
-                        </MintedByYou>
-                      )}
-                  </MintCount>
-                )}
-                {guardStates.isStarted && wallet.publicKey && (
-                <div className="w-100">
-                <BorderLinearProgress variant="determinate" value={(candyMachineV3.items.redeemed * 100 / candyMachineV3.items.available)}></BorderLinearProgress>
-                </div>
-                )}
+                  {guardStates.isStarted && wallet.publicKey && (
+                    <MintCount>
+                      Total minted {candyMachineV3.items.redeemed} /  
+                      {candyMachineV3.items.available}{" "}
+                      {(guards?.mintLimit?.mintCounter?.count ||
+                        guards?.mintLimit?.settings?.limit) && (
+                          <MintedByYou>
+                            <>
+                              ({guards?.mintLimit?.mintCounter?.count || "0"}
+                              {guards?.mintLimit?.settings?.limit && (
+                                <>/{guards?.mintLimit?.settings?.limit} </>
+                              )}
+                              by you)
+                            </>
+                          </MintedByYou>
+                        )}
+                    </MintCount>
+                  )}
+                  {guardStates.isStarted && wallet.publicKey && (
+                    <div className="w-100">
+                      <BorderLinearProgress variant="determinate" value={(candyMachineV3.items.redeemed * 100 / candyMachineV3.items.available)}></BorderLinearProgress>
+                    </div>
+                  )}
                 </ProgressbarWrap>
 
 
@@ -729,20 +741,20 @@ const renderGoLiveDateCounter = ({ days, hours, minutes, seconds }: any) => {
     <StartTimerWrap>
       <StartTimerSubtitle>Mint opens in:</StartTimerSubtitle>
       <StartTimer>
-      <StartTimerInner elevation={1}>
-        <span>{days}</span>Days
-      </StartTimerInner>
-      <StartTimerInner elevation={1}>
-        <span>{hours}</span>
-        Hours
-      </StartTimerInner>
-      <StartTimerInner elevation={1}>
-        <span>{minutes}</span>Mins
-      </StartTimerInner>
-      <StartTimerInner elevation={1}>
-        <span>{seconds}</span>Secs
-      </StartTimerInner>
-    </StartTimer>
+        <StartTimerInner elevation={1}>
+          <span>{days}</span>Days
+        </StartTimerInner>
+        <StartTimerInner elevation={1}>
+          <span>{hours}</span>
+          Hours
+        </StartTimerInner>
+        <StartTimerInner elevation={1}>
+          <span>{minutes}</span>Mins
+        </StartTimerInner>
+        <StartTimerInner elevation={1}>
+          <span>{seconds}</span>Secs
+        </StartTimerInner>
+      </StartTimer>
     </StartTimerWrap>
   );
 };

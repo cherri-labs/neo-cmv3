@@ -127,25 +127,28 @@ export default function useCandyMachineV3(
   const fetchCandyMachine = React.useCallback(async () => {
     return await mx.candyMachines().findByAddress({
       address: new PublicKey(candyMachineId),
-    });
+    }).catch((e) => null);
   }, [candyMachineId]);
 
   const refresh = React.useCallback(async () => {
-    if (!wallet.publicKey) throw new Error("Wallet not loaded yet!");
+    if (!wallet.publicKey) throw new Error("wallet not loaded yet!");
 
     setStatus((x) => ({ ...x, candyMachine: true }));
+
     await fetchCandyMachine()
       .then((cndy) => {
-        setCandyMachine(cndy);
-        setItems({
-          available: cndy.itemsAvailable.toNumber(),
-          remaining: cndy.itemsRemaining.toNumber(),
-          redeemed: cndy.itemsMinted.toNumber(),
-        });
+        if (cndy) {
+          setCandyMachine(cndy);
+          setItems({
+            available: cndy.itemsAvailable.toNumber(),
+            remaining: cndy.itemsRemaining.toNumber(),
+            redeemed: cndy.itemsMinted.toNumber(),
+          });
+        }
 
         return cndy;
       })
-      .catch((e) => console.error("Error while fetching candy machine", e))
+      .catch((e) => console.error("Error while fetching Candy Machine", e))
       .finally(() => setStatus((x) => ({ ...x, candyMachine: false })));
   }, [fetchCandyMachine, wallet.publicKey]);
 
@@ -204,10 +207,10 @@ export default function useCandyMachineV3(
                 nftGate: opts.nftGuards && opts.nftGuards[index]?.gate,
                 allowList,
               },
-            })
+            }).catch((e) => null)
           );
         }
-        const blockhash = await mx.rpc().getLatestBlockhash();
+        const blockhash = await mx.rpc().getLatestBlockhash().catch((e) => null);
 
         const transactions = transactionBuilders.map((t) =>
           t.toTransaction(blockhash)
@@ -226,14 +229,14 @@ export default function useCandyMachineV3(
         let signedTransactions = transactions;
 
         for (let signer in signers) {
-          await signers[signer].signAllTransactions(transactions);
+          await signers[signer].signAllTransactions(transactions).catch((e) => null);
         }
         if (allowList) {
           const allowListCallGuardRouteTx = signedTransactions.shift();
           const allowListCallGuardRouteTxBuilder = transactionBuilders.shift();
           await mx.rpc().sendAndConfirmTransaction(allowListCallGuardRouteTx, {
             commitment: "processed",
-          });
+          }).catch((e) => null);
         }
         const output = await Promise.all(
           signedTransactions.map((tx, i) => {
@@ -243,7 +246,7 @@ export default function useCandyMachineV3(
               .then((tx) => ({
                 ...tx,
                 context: transactionBuilders[i].getContext() as any,
-              }));
+              })).catch((e) => null);
           })
         );
         nfts = await Promise.all(
@@ -297,14 +300,14 @@ export default function useCandyMachineV3(
 
   React.useEffect(() => {
     if (!mx || !wallet.publicKey) return;
-    console.log("useEffact([mx, wallet.publicKey])");
+//    console.log("useEffact([mx, wallet.publicKey])");
     mx.use(walletAdapterIdentity(wallet));
 
     mx.rpc()
       .getBalance(wallet.publicKey)
       .then((x) => x.basisPoints.toNumber())
       .then(setBalance)
-      .catch((e) => console.error("Error to fetch wallet balance", e));
+      .catch((e) => console.error("Error: failed to fetch wallet balance", e));
 
     mx.nfts()
       .findAllByOwner({
@@ -313,7 +316,7 @@ export default function useCandyMachineV3(
       .then((x) =>
         setNftHoldings(x.filter((a) => a.model == "metadata") as any)
       )
-      .catch((e) => console.error("Failed to fetch wallet nft holdings", e));
+      .catch((e) => console.error("Error: failed to fetch wallet NFTs", e));
 
     (async (walletAddress: PublicKey): Promise<Token[]> => {
       const tokenAccounts = (
@@ -356,7 +359,7 @@ export default function useCandyMachineV3(
             walletAddress,
           },
           mx
-        ),
+        ).catch((e) => null),
       };
       await Promise.all(
         candyMachine.candyGuard.groups.map(async (x) => {
@@ -370,7 +373,7 @@ export default function useCandyMachineV3(
               walletAddress,
             },
             mx
-          );
+          ).catch((e) => null);
         })
       );
       setGuardsAndGroups(guards);
@@ -414,9 +417,11 @@ export default function useCandyMachineV3(
     );
   }, [guardsAndGroups, tokenHoldings, balance]);
 
-  React.useEffect(() => {
-    console.log({ guardsAndGroups, guardStates, prices });
-  }, [guardsAndGroups, guardStates, prices]);
+  /*
+     React.useEffect(() => {
+     console.log({ guardsAndGroups, guardStates, prices });
+     }, [guardsAndGroups, guardStates, prices]);
+   */
 
   return {
     candyMachine,
