@@ -4,6 +4,8 @@ I don't have the pretence of saying there is anything new or different in here. 
 
 I tried to mantain as much of the original structure and concept as possible so I wouldn't have to write a new README. I'll just keep it here below. I mostly just updated relevant links to point to new places.
 
+I've also provided a quick setup for title, icon and meta tags which you can customize in the [index.tsx](/pages/index.tsx).
+
 The original project, while very cool, was a mess. But this is not to blame the creator, since CMv3 is still in alpha and the Metaplex official repo provides you with a very ugly red quickstart example themselves. You still may have to `npm i --force` to solve some dependency issues (or god knows what else), and you'll still find a bit of a bungalow down in the console section of your browser. Just try to ignore that. The Candy Machine should still work as expected (it did for me).
 
 ### Preview
