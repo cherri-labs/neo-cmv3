@@ -131,7 +131,7 @@ export default function useCandyMachineV3(
   }, [candyMachineId]);
 
   const refresh = React.useCallback(async () => {
-    if (!wallet.publicKey) throw new Error("wallet not loaded yet!");
+    if (!wallet.publicKey) throw new Error("Wallet not loaded yet.");
 
     setStatus((x) => ({ ...x, candyMachine: true }));
 
@@ -170,7 +170,7 @@ export default function useCandyMachineV3(
 
       let nfts: (Sft | SftWithToken | Nft | NftWithToken)[] = [];
       try {
-        if (!candyMachine) throw new Error("Candy Machine not loaded yet!");
+        if (!candyMachine) throw new Error("Candy Machine not loaded yet.");
 
         setStatus((x) => ({
           ...x,
@@ -270,7 +270,7 @@ export default function useCandyMachineV3(
         //   redeemed: x.redeemed + nfts.length,
         // }));
       } catch (error: any) {
-        let message = error.msg || "Minting failed! Please try again!";
+        let message = error.msg || "Minting failed. Please try again!";
         if (!error.msg) {
           if (!error.message) {
             message = "Transaction Timeout! Please try again.";
