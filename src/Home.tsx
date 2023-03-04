@@ -7,7 +7,6 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 import confetti from "canvas-confetti";
 import Link from "next/link";
-import Head from "next/head";
 import Countdown from "react-countdown";
 
 import { useEffect, useMemo, useState } from "react";
@@ -33,6 +32,9 @@ import {
   ParsedPricesForUI,
 } from "./hooks/types";
 import { guardToLimitUtil } from "./hooks/utils";
+
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/noto-sans/900.css";
 
 const BorderLinearProgress = styled(LinearProgress)`
   height: 16px !important;
@@ -580,11 +582,6 @@ const Home = (props: HomeProps) => {
   return (
     <main>
       <>
-        <Head>
-          <style>
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&family=Plus+Jakarta+Sans:wght@600&display=swap');
-          </style>
-        </Head>
         <Header>
           <WalletContainer>
             <Wallet>

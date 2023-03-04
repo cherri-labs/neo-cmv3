@@ -1,6 +1,8 @@
-# Candy Machine v3 UI Introduction
-Hi! This is a production ready **Candy Machine V3** responsive UI which can be easily customized.
-Major features of the CMv3 such as Candy Guards are implemented & auto-detected.
+# Neo-CMv3
+
+I don't have the pretence of saying this is something new or different. What this is is a minor improvement upon the [original repo](https://github.com/wearekite/candy-machine-v3-ui), with some connection errors fixed, some font and color re-configuration and some added variables in globals.css for easier and more diverse customization.
+
+The original project, while very cool, was a mess. You still may have to `npm i --force` to solve some dependency conflicts, and you'll still find a brothel in the console section of your browser. The Candy Machine should still work as expected.
 
 ### Preview
 ![Desktop preview of Candy Machine V3](https://cdn.discordapp.com/attachments/1039648022516215919/1072170298398474250/cmv3.png)
