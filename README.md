@@ -1,19 +1,21 @@
 # Neo-CMv3
 
-I don't have the pretence of saying this is something new or different. What this is is a minor improvement upon the [original repo](https://github.com/wearekite/candy-machine-v3-ui), with some connection errors fixed, some font and color re-configuration and some added variables in globals.css for easier and more diverse customization.
+I don't have the pretence of saying there is anything new or different in here. What this is is some minor improvements upon the [original repo](https://github.com/wearekite/candy-machine-v3-ui), with some connection error fixes, some CSS added variables in globals.css for easier and more diverse customization, font (Noto Sans) and color (wallet menus) style refinements, self-hosted font imports (previous one was not working for me), Firefox patches (number input appearance and more).
 
-The original project, while very cool, was a mess. You still may have to `npm i --force` to solve some dependency conflicts, and you'll still find a brothel in the console section of your browser. The Candy Machine should still work as expected.
+I tried to mantain as much of the original structure and concept as possible so I wouldn't have to write a new README. I'll just keep it here below. I mostly just updated relevant links to point to new places.
+
+The original project, while very cool, was a mess. But this is not to blame the creator, since CMv3 is still in alpha and the Metaplex official repo provides you with a very ugly red quickstart example themselves. You still may have to `npm i --force` to solve some dependency issues (or god knows what else), and you'll still find a bit of a bungalow down in the console section of your browser. Just try to ignore that. The Candy Machine should still work as expected (it did for me).
 
 ### Preview
 ![Desktop preview of Candy Machine V3](https://cdn.discordapp.com/attachments/1039648022516215919/1072170298398474250/cmv3.png)
 — Desktop preview.
 
-Preview it live [here](https://wearekite-cmv3-ui.vercel.app/).
+Preview it live [here](https://neo-cmv3.vercel.app/).
 
 ### Deploy with Vercel *(recommended)*
 Vercel is great to host your Candy Machine on, deploy it instantly by clicking the button below.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwearekite%2Fcandy-machine-v3-ui&env=NEXT_PUBLIC_SOLANA_NETWORK,NEXT_PUBLIC_RPC_HOST,NEXT_PUBLIC_CANDY_MACHINE_ID&project-name=my-kite-cmv3&repository-name=my-kite-cmv3)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcherri-labs%2Fneo-cmv3&env=NEXT_PUBLIC_SOLANA_NETWORK,NEXT_PUBLIC_RPC_HOST,NEXT_PUBLIC_CANDY_MACHINE_ID&project-name=neo-cmv3&repository-name=neo-cmv3)
 
 ### Implemented features
 - [x] Responsive UI
@@ -39,7 +41,7 @@ Vercel is great to host your Candy Machine on, deploy it instantly by clicking t
   - [x] Gatekeeper
 
 ### Multi Group 
-*For Multi-group functionality use [multi-group](https://github.com/wearekite/candy-machine-v3-ui/tree/multi-group) branch*
+*For Multi-group functionality use [multi-group](/tree/multi-group) branch*
 
 ![Desktop preview of Multi Group Functionality](https://media.discordapp.net/attachments/621055440268165121/1080220611982401598/Mint_Groups.png)
 — Desktop preview of multi group functionality.
@@ -79,7 +81,7 @@ Want to customize the color scheme? This frontend uses 6 main colors that can be
 — Candy Machine V3 with Address Gate, Allow List or other similar guards
 
 ### Credits
-Thanks to [Solana Studio](https://github.com/Solana-Studio) for creating the original frontend. This repo is an addition onto theirs with more frontend features and dynamic functions.
+Thanks to [wearekite](https://github.com/wearekite/candy-machine-v3-ui) and [Solana Studio](https://github.com/Solana-Studio) for creating the original frontend. This repo is just a quick JS patch with some added CSS customization. Nothing more.
 
-## Feedback/Collaborating/Support
-If you have any feedback, want to collaborate or need support, please reach out to us at hello@kite.studio
+## Contacts / Help
+cherrynoize9987@outlook.com | hello@kite.studio (<- if you have doubts this guy probably knows best)
