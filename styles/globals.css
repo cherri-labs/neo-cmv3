@@ -3,7 +3,7 @@
     --white: #fff;
     --black: #000;
     --light-grey: #f9fcff;
-    --ocean-blue: #2E446E;
+    --ocean-blue: #3E448E;
     --primary: #4E44CE;
     --error: #D92D20;
     --main-bg-color: #0E0E0E;
@@ -12,10 +12,10 @@
     --wallet-btn-color-hover: var(--black);
     --wallet-btn-bg-color: var(--white);
     --wallet-btn-bg-color-hover: var(--white);
-    --list-btn-color: var(--white);
-    --list-btn-color-hover: var(--white);
-    --list-btn-bg-color: none;
-    --list-btn-bg-color-hover: var(--ocean-blue);
+    --wallet-list-btn-color: var(--white);
+    --wallet-list-btn-color-hover: var(--white);
+    --wallet-list-btn-bg-color: none;
+    --wallet-list-btn-bg-color-hover: var(--ocean-blue);
     --wallet-dropdown-list-bg: var(--alt-bg-color);
     --wallet-dropdown-list-item-color: none;
     --wallet-dropdown-list-item-bg: var(--main-bg-color);
@@ -77,14 +77,14 @@ input::-webkit-inner-spin-button {
 }
 /* Wallet list entries */
 li > .wallet-adapter-button {
-    background-color: var(--list-btn-bg-color) !important;
-    color: var(--list-btn-color) !important;
+    background-color: var(--wallet-list-btn-bg-color) !important;
+    color: var(--wallet-list-btn-color) !important;
     opacity: 1 !important;
     transition: .2s !important;
 }
 li > .wallet-adapter-button:hover {
-    background-color: var(--list-btn-bg-color-hover) !important;
-    color: var(--list-btn-color) !important;
+    background-color: var(--wallet-list-btn-bg-color-hover) !important;
+    color: var(--wallet-list-btn-color) !important;
     opacity: .9 !important;
 }
 .wallet-adapter-modal-list {
