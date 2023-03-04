@@ -12,7 +12,6 @@ const IndexPage = ({}) => {
       <Head>
         <title>Neo CMv3</title>
         <meta charSet="utf-8"/>
-        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no"/>
         <meta name="theme-color" content="#000"/>
         <meta name="description" content="My very own Candy Machine on Solana"/>
