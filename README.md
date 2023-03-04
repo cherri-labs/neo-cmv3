@@ -1,4 +1,5 @@
-# Neo-CMv3
+# neo-cmv3
+## Introduction
 
 I don't have the pretence of saying there is anything new or different in here. What this is is some minor improvements upon the [original repo](https://github.com/wearekite/candy-machine-v3-ui), with some connection error fixes, some CSS added variables in globals.css for easier and more diverse customization, font (Noto Sans) and color (wallet menus) style refinements, self-hosted font imports (previous one was not working for me), Firefox patches (number input appearance and more).
 
