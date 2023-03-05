@@ -607,7 +607,7 @@ const Home = (props: HomeProps) => {
                   width={896}
                   height={504}
                   images={images}
-                  loop={false}
+                  loop={true}
                   showBullets={false}
                   showNavs={true}
                   navStyle={2}
