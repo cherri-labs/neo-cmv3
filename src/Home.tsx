@@ -36,6 +36,23 @@ import { guardToLimitUtil } from "./hooks/utils";
 import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/noto-sans/900.css";
 
+
+
+
+
+import SimpleImageSlider from "react-simple-image-slider";
+
+const images = [
+  { url: "https://bafybeidt3npna22eu2h7kewf6je7igtkddbdpdu4w737rhdfhy2rsmx5ze.ipfs.w3s.link/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg" },
+  { url: "https://bafybeiedd5g6nkmftwkzy5jlq3zcisj3jt64kwmxjoepgp3xyxln6zoveu.ipfs.w3s.link/mq7l8fcg0te6M9L8Zqeo--3--dho30_2x.jpg" },
+];
+
+
+
+
+
+
+
 const BorderLinearProgress = styled(LinearProgress)`
   height: 16px !important;
   border-radius: 30px;
@@ -92,13 +109,6 @@ const Other = styled.div`
   align-items: flex-start;
   padding: 0px;
   gap: 48px;
-  width: 100%;
-`
-const ImageWrap = styled.div`
-  width: 100%;
-`
-const Image = styled.div`
-  height: 100%
   width: 100%;
 `
 const CollectionName = styled.h1`
@@ -596,11 +606,21 @@ const Home = (props: HomeProps) => {
         <Section>
           <Container>
             <Column>
-              <ImageWrap className="image-wrap">
-                <Image>
-
-                </Image>
-              </ImageWrap>
+              <div className="image-wrap">
+                <SimpleImageSlider
+                  width={896}
+                  height={504}
+                  images={images}
+                  loop={false}
+                  showBullets={false}
+                  showNavs={true}
+                  navStyle={2}
+                  navSize={40}
+                  navMargin={2}
+                  slideDuration={0.01}
+                  bgColor="transparent"
+                />
+              </div>
             </Column>
             <Column>
               <Content>
