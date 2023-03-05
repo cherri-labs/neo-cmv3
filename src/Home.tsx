@@ -95,10 +95,7 @@ const Other = styled.div`
   width: 100%;
 `
 const ImageWrap = styled.div`
-  aspect-ratio: 1 / 1;
   width: 100%;
-  background-image: url(https://images.pexels.com/photos/2832432/pexels-photo-2832432.png);
-  border-radius: 16px;
 `
 const Image = styled.div`
   height: 100%
@@ -599,7 +596,7 @@ const Home = (props: HomeProps) => {
         <Section>
           <Container>
             <Column>
-              <ImageWrap>
+              <ImageWrap className="image-wrap">
                 <Image>
 
                 </Image>

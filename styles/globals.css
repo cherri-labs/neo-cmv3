@@ -1,4 +1,5 @@
-/* Need to change colors? Do it here, these are the main colors that are used all over the website */
+/* Need to change colors? Do it here, these are the main colors that are used all over the website. */
+/* Backgrounds can be any CSS background style. Don't need to be background-colors. */
 :root {
     --white: #fff;
     --black: #000;
@@ -6,39 +7,58 @@
     --ocean-blue: #3E448E;
     --primary: #4E44CE;
     --error: #D92D20;
-    --main-bg-color: #0E0E0E;
-    --alt-bg-color: #202020;
-    --wallet-btn-color: var(--black);
-    --wallet-btn-color-hover: var(--black);
-    --wallet-btn-bg-color: var(--white);
-    --wallet-btn-bg-color-hover: var(--white);
+    --accent-color: #800080;
+    --accent-color-trans: #80008033;
+    --page-background: #300030;
+    --page-fg-color: var(--white);
+    --main-bg: #0E0E0E;
+    --alt-bg: #202020;
+    --selection-fg: var(--black);
+    --selection-bg: var(--white);
+    --svg-opacity-hover: .8;
+    --wallet-btn-color: var(--white);
+    --wallet-btn-bg: var(--accent-color);
+    --wallet-btn-opacity: .9;
+    --wallet-btn-color-hover: #50103c;
+    --wallet-btn-bg-hover: #A7A2E6;
+    --wallet-btn-hover-opacity: 1;
     --wallet-list-btn-color: var(--white);
     --wallet-list-btn-color-hover: var(--white);
-    --wallet-list-btn-bg-color: none;
-    --wallet-list-btn-bg-color-hover: var(--ocean-blue);
-    --wallet-dropdown-list-bg: var(--alt-bg-color);
+    --wallet-list-btn-bg: none;
+    --wallet-list-btn-bg-hover: var(--wallet-btn-bg);
+    --wallet-dropdown-list-bg: var(--alt-bg);
     --wallet-dropdown-list-item-color: none;
-    --wallet-dropdown-list-item-bg: var(--main-bg-color);
+    --wallet-dropdown-list-item-bg: tramsparent;
     --wallet-dropdown-list-item-hover-color: var(--black); /* Aero theme */
-    --wallet-dropdown-list-item-hover-bg: var(--light-grey); /* Aero theme */
+    --wallet-dropdown-list-item-hover-bg: var(--wallet-btn-bg-hover); /* Aero theme */
 /*    --wallet-dropdown-list-item-hover-color: var(--white); /* Dark theme */
 /*    --wallet-dropdown-list-item-hover-bg: var(--black); /* Dark theme */
 /*    --wallet-dropdown-list-item-hover-bg: var(--ocean-blue); /* Ocean theme */
 }
 
+/* --< text selection >-- */
+*::selection,
+a::selection,
+button::selection, input::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-fg);
+}
+
 body {
-    background-color: var(--main-bg-color);
+    background: var(--page-background);
+    color: var(--page-fg-color);
     font-family: 'Plus Jakarta Sans', 'Calibri', sans-serif;
     font-size: 1rem;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--black);
-    color: var(--white);
 }
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     padding: 0;
+}
+h2, h3, h4, h5, h6 {
+    cursor: default;
 }
 /* Firefox */
 input[type=number] {
@@ -54,36 +74,65 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 
+/* NFT image container div */
+.image-wrap {
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  background-size: cover;
+  background-image: url(https://images.nightcafe.studio/jobs/vy3stib90QUIZFoPhxGJ/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg?tr=w-1600,c-at_max);
+}
+
+a > svg {
+/*
+    border-radius: 30%;
+    transition: box-shadow .2s;
+*/
+}
+
+a:hover > svg {
+/*
+    background: var(--accent-color-trans);
+    box-shadow: 0 0 10px 3px var(--accent-color-trans);
+*/
+    opacity: var(--svg-opacity-hover);
+}
+
 /* Modal that opens when the 'Connect Wallet' button is clicked styling */
 .wallet-adapter-modal-wrapper {
-    background-color: var(--alt-bg-color) !important;
+    background: var(--alt-bg) !important;
 }
 .wallet-adapter-modal-title {
     color: var(--white) !important;
 }
+
 /* Connect Wallet button */
 :not(li) > .wallet-adapter-button {
-    background-color: var(--wallet-btn-bg-color);
+    background: var(--wallet-btn-bg);
     color: var(--wallet-btn-color);
-    transition: opacity .2s;
+    transition: background .2s, color .2s, opacity .2s;
 }
 :not(li) > .wallet-adapter-button:hover {
     color: var(--wallet-btn-color-hover);
-    opacity: .9;
 }
+
 /* Top one */
-:not(.wallet-adapter-modal-wrapper) > ul:first-of-type .wallet-adapter-button:hover {
-    background-color: var(--wallet-btn-bg-color-hover) !important;
+:not(.wallet-adapter-modal-wrapper) > ul:first-of-type .wallet-adapter-button {
+    opacity: var(--wallet-btn-opacity);
 }
+:not(.wallet-adapter-modal-wrapper) > ul:first-of-type .wallet-adapter-button:hover {
+    background: var(--wallet-btn-bg-hover) !important;
+    opacity: var(--wallet-btn-hover-opacity);
+}
+
 /* Wallet list entries */
 li > .wallet-adapter-button {
-    background-color: var(--wallet-list-btn-bg-color) !important;
+    background: var(--wallet-list-btn-bg) !important;
     color: var(--wallet-list-btn-color) !important;
     opacity: 1 !important;
     transition: .2s !important;
 }
 li > .wallet-adapter-button:hover {
-    background-color: var(--wallet-list-btn-bg-color-hover) !important;
+    background: var(--wallet-list-btn-bg-hover) !important;
     color: var(--wallet-list-btn-color) !important;
     opacity: .9 !important;
 }
@@ -91,17 +140,20 @@ li > .wallet-adapter-button:hover {
     margin: 0 0 4px !important;
 }
 .wallet-adapter-dropdown-list {
-    background-color: var(--wallet-dropdown-list-bg) !important;
+    background: var(--wallet-dropdown-list-bg) !important;
 }
 
 .wallet-adapter-dropdown-list-item {
-    background-color: var(--wallet-dropdown-list-item-bg) !important;
+    background: var(--wallet-dropdown-list-item-bg) !important;
     color: var(--wallet-dropdown-list-item-color) !important;
-    transition: color .2s, background-color .2s, opacity .4s;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    min-width: 8vw;
+    transition: color .2s, background .2s, opacity .4s;
 }
 
 .wallet-adapter-dropdown-list-item:not([disabled]):hover {
-    background-color: var(--wallet-dropdown-list-item-hover-bg) !important;
+    background: var(--wallet-dropdown-list-item-hover-bg) !important;
     color: var(--wallet-dropdown-list-item-hover-color) !important;
     opacity: .9;
 }
