@@ -34,6 +34,10 @@
 /*    --wallet-dropdown-list-item-hover-color: var(--white); /* Dark theme */
 /*    --wallet-dropdown-list-item-hover-bg: var(--black); /* Dark theme */
 /*    --wallet-dropdown-list-item-hover-bg: var(--ocean-blue); /* Ocean theme */
+    --image-url: url(https://bafybeidt3npna22eu2h7kewf6je7igtkddbdpdu4w737rhdfhy2rsmx5ze.ipfs.w3s.link/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg);
+/*
+    --image-url: url(https://bafybeiedd5g6nkmftwkzy5jlq3zcisj3jt64kwmxjoepgp3xyxln6zoveu.ipfs.w3s.link/mq7l8fcg0te6M9L8Zqeo--3--dho30_2x.jpg);
+*/
 }
 
 /* --< text selection >-- */
@@ -79,7 +83,7 @@ input::-webkit-inner-spin-button {
   aspect-ratio: 1 / 1;
   border-radius: 16px;
   background-size: cover;
-  background-image: url(https://images.nightcafe.studio/jobs/vy3stib90QUIZFoPhxGJ/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg?tr=w-1600,c-at_max);
+  background-image: var(--image-url);
 }
 
 a > svg {
