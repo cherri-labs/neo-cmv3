@@ -3,8 +3,15 @@
 :root {
     --white: #fff;
     --black: #000;
-    --light-grey: #f9fcff;
-    --ocean-blue: #3E448E;
+    --darkgrey: #1C203D;
+    --grey: #f9fcff;
+    --lightblue: #71919F;
+    --greenblue: #2B5565;
+    --blue: #3E448E;
+    --pink: #DB6596;
+    --orange: #DB6506;
+    --lightyellow: #EED1A9;
+    --yellow: #DED109;
     --primary: #4E44CE;
     --error: #D92D20;
     --accent-color: #800080;
@@ -20,12 +27,15 @@
     --wallet-btn-bg: var(--accent-color);
     --wallet-btn-opacity: .9;
     --wallet-btn-color-hover: #50103c;
-    --wallet-btn-bg-hover: #A7A2E6;
+    --wallet-btn-bg-hover: var(--lightyellow);
     --wallet-btn-hover-opacity: 1;
     --wallet-list-btn-color: var(--white);
-    --wallet-list-btn-color-hover: var(--white);
     --wallet-list-btn-bg: none;
-    --wallet-list-btn-bg-hover: var(--wallet-btn-bg);
+    --wallet-list-btn-color-hover: var(--white);
+    --wallet-list-btn-bg-hover: #0003;
+    --wallet-list-btn-hover-border-color: var(--darkgrey);
+    --wallet-list-btn-border-width: 2px;
+    --wallet-list-btn-border-radius: 3px;
     --wallet-dropdown-list-bg: var(--alt-bg);
     --wallet-dropdown-list-item-color: none;
     --wallet-dropdown-list-item-bg: tramsparent;
@@ -33,7 +43,7 @@
     --wallet-dropdown-list-item-hover-bg: var(--wallet-btn-bg-hover); /* Aero theme */
     /*    --wallet-dropdown-list-item-hover-color: var(--white); /* Dark theme */
     /*    --wallet-dropdown-list-item-hover-bg: var(--black); /* Dark theme */
-    /*    --wallet-dropdown-list-item-hover-bg: var(--ocean-blue); /* Ocean theme */
+    /*    --wallet-dropdown-list-item-hover-bg: var(--blue); /* Ocean theme */
     --image-url: url(https://bafybeidt3npna22eu2h7kewf6je7igtkddbdpdu4w737rhdfhy2rsmx5ze.ipfs.w3s.link/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg);
     /*
     --image-url: url(https://bafybeiedd5g6nkmftwkzy5jlq3zcisj3jt64kwmxjoepgp3xyxln6zoveu.ipfs.w3s.link/mq7l8fcg0te6M9L8Zqeo--3--dho30_2x.jpg);
@@ -140,14 +150,17 @@ a:hover > svg {
 
 /* Wallet list entries */
 li > .wallet-adapter-button {
+    border: var(--wallet-list-btn-border-width) solid transparent !important;
+    border-radius: var(--wallet-list-btn-border-radius) !important;
     background: var(--wallet-list-btn-bg) !important;
     color: var(--wallet-list-btn-color) !important;
     opacity: 1 !important;
     transition: .2s !important;
 }
 li > .wallet-adapter-button:hover {
+    border-color: var(--wallet-list-btn-hover-border-color) !important;
     background: var(--wallet-list-btn-bg-hover) !important;
-    color: var(--wallet-list-btn-color) !important;
+    color: var(--wallet-list-btn-color-hover) !important;
     opacity: .9 !important;
 }
 .wallet-adapter-modal-list {
