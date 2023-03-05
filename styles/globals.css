@@ -93,7 +93,7 @@ input::-webkit-inner-spin-button {
 }
 
 .image-wrap .rsis-container ~ button {
-    filter: invert(97%) sepia(95%) saturate(2287%) hue-rotate(295deg) brightness(87%) contrast(90%) opacity(80%);
+    filter: invert(95%) sepia(90%) saturate(2287%) hue-rotate(395deg) brightness(187%) contrast(60%) opacity(70%);
 }
 
 a > svg {
