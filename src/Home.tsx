@@ -71,10 +71,6 @@ const Header = styled.div`
   align-items: center;
   position: absolute;
   width: 100%;
-
-  @media only screen and (max-width: 450px) {
-    top: 16px;
-  }
 `;
 const WalletContainer = styled.div`
   display: flex;
