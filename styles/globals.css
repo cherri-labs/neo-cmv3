@@ -24,7 +24,7 @@
     --alt-bg: #202020;
     --selection-fg: var(--black);
     --selection-bg: var(--white);
-    --svg-opacity-hover: .8;
+    --svg-opacity-hover: 1;
     --wallet-btn-color: var(--white);
     --wallet-btn-bg: var(--accent-color);
     --wallet-btn-opacity: .9;
