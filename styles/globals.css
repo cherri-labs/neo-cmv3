@@ -47,11 +47,11 @@
     /*    --wallet-dropdown-list-item-hover-color: var(--white); /* Dark theme */
     /*    --wallet-dropdown-list-item-hover-bg: var(--black); /* Dark theme */
     /*    --wallet-dropdown-list-item-hover-bg: var(--blue); /* Ocean theme */
-    --arrow-button-wrap-hover-background: var(--grey-trans);
+    --arrow-button-wrap-hover-background: #fff3;
     --arrow-button-color: #000;
     --arrow-button-size: 8px;
     --arrow-button-thickness: 3px;
-    --arrow-button-margin: 38px;
+    --arrow-button-margin: 65px;
     --image-url: url(https://bafybeidt3npna22eu2h7kewf6je7igtkddbdpdu4w737rhdfhy2rsmx5ze.ipfs.w3s.link/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg);
     /*
     --image-url: url(https://bafybeiedd5g6nkmftwkzy5jlq3zcisj3jt64kwmxjoepgp3xyxln6zoveu.ipfs.w3s.link/mq7l8fcg0te6M9L8Zqeo--3--dho30_2x.jpg);
