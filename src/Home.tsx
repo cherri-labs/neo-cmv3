@@ -613,7 +613,7 @@ const Home = (props: HomeProps) => {
                   navStyle={2}
                   navSize={40}
                   navMargin={2}
-                  slideDuration={0.01}
+                  slideDuration={0.35}
                   bgColor="transparent"
                 />
               </div>
