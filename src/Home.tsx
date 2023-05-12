@@ -36,22 +36,14 @@ import { guardToLimitUtil } from "./hooks/utils";
 import "@fontsource/plus-jakarta-sans/600.css";
 import "@fontsource/noto-sans/900.css";
 
-
-
-
-
 import SimpleImageSlider from "react-simple-image-slider";
 
 const images = [
+  { url: "img.jpg" },
+  /* my ISP was blocking IPFS
   { url: "https://bafybeidt3npna22eu2h7kewf6je7igtkddbdpdu4w737rhdfhy2rsmx5ze.ipfs.w3s.link/vy3stib90QUIZFoPhxGJ--2--2v1v3_2x.jpg" },
-  { url: "https://bafybeiedd5g6nkmftwkzy5jlq3zcisj3jt64kwmxjoepgp3xyxln6zoveu.ipfs.w3s.link/mq7l8fcg0te6M9L8Zqeo--3--dho30_2x.jpg" },
+  */
 ];
-
-
-
-
-
-
 
 const BorderLinearProgress = styled(LinearProgress)`
   height: 16px !important;
@@ -609,7 +601,7 @@ const Home = (props: HomeProps) => {
                   images={images}
                   loop={true}
                   showBullets={false}
-                  showNavs={true}
+                  showNavs={false}
                   navStyle={2}
                   navSize={40}
                   navMargin={2}

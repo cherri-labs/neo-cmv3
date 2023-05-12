@@ -87,4 +87,4 @@ Want to customize the color scheme? This frontend uses 6 main colors that can be
 Thanks to [wearekite](https://github.com/wearekite/candy-machine-v3-ui) and [Solana Studio](https://github.com/Solana-Studio) for creating the original frontend. This repo is just a quick JS patch with some added CSS customization. Nothing more.
 
 ## Contacts / Help
-cherrynoize9987@outlook.com | hello@kite.studio (<- if you have doubts this guy probably knows best)
+[cherrynoize@duck.com](mailto:cherrynoize@duck.com) | [hello@kite.studio](mailto:hello@kite.studio) (<- if you have doubts this guy probably knows best)
