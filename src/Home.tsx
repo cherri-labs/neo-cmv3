@@ -45,6 +45,25 @@ const images = [
   */
 ];
 
+/* Configure the image slider here */
+function Image() {
+  return (
+    <SimpleImageSlider
+      width={896}
+      height={504}
+      images={images}
+      loop={true}
+      showBullets={false}
+      showNavs={false}
+      navStyle={2}
+      navSize={40}
+      navMargin={2}
+      slideDuration={0.35}
+      bgColor="transparent"
+    />
+  );
+}
+
 const BorderLinearProgress = styled(LinearProgress)`
   height: 16px !important;
   border-radius: 30px;
@@ -595,19 +614,7 @@ const Home = (props: HomeProps) => {
           <Container>
             <Column>
               <div className="image-wrap">
-                <SimpleImageSlider
-                  width={896}
-                  height={504}
-                  images={images}
-                  loop={true}
-                  showBullets={false}
-                  showNavs={false}
-                  navStyle={2}
-                  navSize={40}
-                  navMargin={2}
-                  slideDuration={0.35}
-                  bgColor="transparent"
-                />
+                <Image />
               </div>
             </Column>
             <Column>
