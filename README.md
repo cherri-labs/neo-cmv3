@@ -13,17 +13,17 @@ only one image in the array. You can customize it in `src/Home.tsx` pretty much 
 
 ## Install
 
-  git clone https://github.com/cherri-labs/neo-cmv3/
-  cd neo-cmv3
-  npm i
+    git clone https://github.com/cherri-labs/neo-cmv3/
+    cd neo-cmv3
+    npm i
 
 Then to run the app:
 
-  npm run dev
+    npm run dev
 
 or
 
-  npm run build
+    npm run build
 
 to create a production build.
 
