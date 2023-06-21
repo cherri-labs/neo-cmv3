@@ -1,5 +1,7 @@
 # neo-cmv3
 
+# This repo is now abandoned. Please refer to [this fork](https://github.com/cherrynoize/neo-cmv3) instead.
+
 ## Introduction
 
 This is is some minor improvement upon the [original repo](https://github.com/wearekite/candy-machine-v3-ui), with some connection error fixes,
